@@ -1,0 +1,18 @@
+<form class="form-horizontal well">
+    <div class="form-group">
+        <div ng-hide="isAvailableResults()">
+            <div class="row text-center hidden-xs">
+                <img src="img/music.jpg" alt="MusicBrainz Logo" /><br/>
+                <br/>
+            </div>
+        </div>
+        <label id="search-input-label" class="col-sm-3 control-label" ng-bind="translation.SEARCH_LABEL">Searching a music album</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control"  placeholder="{{translation.SEARCH_PLACEHOLDER}}" ng-model="searchText"
+                   typeahead="album for album in autocomplete($viewValue) | filter:$viewValue" />
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary" ng-click="fullTextSearch(searchText, 1)" ng-bind="translation.SEARCH_BUTTON">MusicBrainz Search</button>
+        </div>
+    </div>
+</form>
