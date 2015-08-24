@@ -1,4 +1,6 @@
 angular.module('musicApp',[])
+	
+	//Affiche le nombre d'étoile d'un album
 	.filter('reverse',function () {
         return function (items) {
             if (!items) {
@@ -8,12 +10,21 @@ angular.module('musicApp',[])
         };
     })
 
+	//Affiche le style de music (pop-rock-blues...)
+	.filter('joinBy',function () {
+        return function (input, delimiter) {
+            return (input || []).join(delimiter || ', ');
+        };
+    })
+
+	//Affiche la langue chantée du groupe
     .filter('artistTypeLabel', ['$rootScope', function ($rootScope) {
         return function (input) {
             return $rootScope.translation['ARTIST_TYPE_' + input];
         };
     }])
 
+    //Affiche la date de sortie de l'album
     .filter('yearFormat', ['$rootScope', function ($rootScope) {
         return function (range) {
             if (range.from === undefined) {
